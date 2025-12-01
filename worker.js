@@ -3,100 +3,117 @@ export default {
       const html = `<!DOCTYPE html>
   <html lang="zh-CN">
   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>!!!</title>
-      <style>
-          * {
-              margin: 0;
-              padding: 0;
-              box-sizing: border-box;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Out of Office</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        background: #000;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* 保持字体不变 */
+        font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+        overflow: hidden;
+      }
+      
+      .message {
+        font-size: 8rem;
+        font-weight: bold;
+        text-align: center;
+        padding: 20px;
+        
+        /* === 核心修改: 更改为更柔和、更科技感的渐变颜色 (iPhone X/iOS 风格参考) === */
+        background-image: 
+            /* 浅蓝色 - 左上 */
+            radial-gradient(at 0% 0%, #1a73e8 0px, transparent 50%), 
+            /* 柔和紫 - 右上 */
+            radial-gradient(at 100% 0%, #a855f7 0px, transparent 50%), 
+            /* 亮粉色/洋红 - 右下 */
+            radial-gradient(at 100% 100%, #ec4899 0px, transparent 50%), 
+            /* 浅绿色/青色 - 左下 */
+            radial-gradient(at 0% 100%, #10b981 0px, transparent 50%), 
+            /* 白色高光 - 中心偏上 */
+            radial-gradient(at 50% 30%, #ffffff 0px, transparent 50%),
+            /* 橙/黄 - 中心偏下 */
+            radial-gradient(at 70% 80%, #f97316 0px, transparent 50%); 
+            
+        /* 增大尺寸以获得更柔和的过渡 */
+        background-size: 250% 250%; 
+        /* 初始位置，让颜色更均匀分布 */
+        background-position: 0% 0%, 100% 0%, 100% 100%, 0% 100%, 50% 30%, 70% 80%;
+        
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+        /* 复合动画：位置移动 + 尺寸缩放 = 模拟形状变形 */
+        animation: meshMorph 20s ease-in-out infinite alternate; /* 增加动画时长，使其更慢、更平滑 */
+        line-height: 1.5;
+      }
+      
+      /* === 核心修改: 调整动画关键帧，增加更多细微变化和更平滑的速度 === */
+      @keyframes meshMorph {
+          0% {
+              background-position: 
+                  0% 0%, 100% 0%, 100% 100%, 0% 100%, 50% 30%, 70% 80%;
+              background-size: 250% 250%;
           }
-          
-          body {
-              background: #000;
-              height: 100vh;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
-              overflow: hidden;
+          20% {
+              background-position: 
+                  15% 5%, 85% 15%, 95% 85%, 5% 95%, 40% 20%, 60% 70%;
+              background-size: 270% 220%;
           }
-          
-          .message {
-              font-size: 8rem;
-              font-weight: bold;
-              text-align: center;
-              padding: 20px;
-              
-              /* 使用多层径向渐变模拟自由形状网格 */
-              background-image: 
-                  radial-gradient(at 0% 0%, #240b36 0px, transparent 50%),      /* Dark Purple */
-                  radial-gradient(at 100% 0%, #c31432 0px, transparent 50%),    /* Deep Red */
-                  radial-gradient(at 100% 100%, #00c6ff 0px, transparent 50%),  /* Cyan */
-                  radial-gradient(at 0% 100%, #f7971e 0px, transparent 50%),    /* Orange */
-                  radial-gradient(at 50% 50%, #fc00ff 0px, transparent 50%),    /* Pink */
-                  radial-gradient(at 50% 0%, #ffffff 0px, transparent 50%);     /* White Highlight */
-                  
-              background-size: 180% 180%;
-              background-position: 0% 0%, 100% 0%, 100% 100%, 0% 100%, 50% 50%, 50% 0%;
-              
-              -webkit-background-clip: text;
-              background-clip: text;
-              -webkit-text-fill-color: transparent;
-              
-              /* 复合动画：位置移动 + 尺寸缩放 = 模拟形状变形 */
-              animation: meshMorph 15s ease-in-out infinite alternate;
-              line-height: 1.5;
+          40% {
+              background-position: 
+                  25% 10%, 75% 20%, 85% 75%, 15% 85%, 60% 40%, 40% 60%;
+              background-size: 240% 260%;
           }
-          
-          @keyframes meshMorph {
-              0% {
-                  background-position: 
-                      0% 0%, 100% 0%, 100% 100%, 0% 100%, 50% 50%, 50% 0%;
-                  background-size: 180% 180%;
-              }
-              25% {
-                  background-position: 
-                      20% 20%, 80% 10%, 90% 90%, 10% 80%, 60% 40%, 40% 20%;
-                  background-size: 200% 220%;
-              }
-              50% {
-                  background-position: 
-                      0% 50%, 100% 50%, 50% 100%, 50% 0%, 30% 70%, 70% 30%;
-                  background-size: 220% 180%;
-              }
-              75% {
-                  background-position: 
-                      10% 10%, 90% 20%, 80% 80%, 20% 90%, 40% 60%, 60% 10%;
-                  background-size: 190% 210%;
-              }
-              100% {
-                  background-position: 
-                      0% 0%, 100% 0%, 100% 100%, 0% 100%, 50% 50%, 50% 0%;
-                  background-size: 180% 180%;
-              }
+          60% {
+              background-position: 
+                  5% 50%, 95% 50%, 50% 95%, 50% 5%, 30% 70%, 70% 30%;
+              background-size: 280% 230%;
           }
-          
-          @media (max-width: 768px) {
-              .message {
-                  font-size: 2rem;
-                  padding: 15px;
-              }
+          80% {
+              background-position: 
+                  10% 90%, 90% 10%, 80% 20%, 20% 80%, 70% 50%, 30% 50%;
+              background-size: 230% 270%;
           }
-          
-          @media (max-width: 480px) {
-              .message {
-                  font-size: 1.5rem;
-                  padding: 10px;
-              }
+          100% {
+              /* 恢复到初始状态 */
+              background-position: 
+                  0% 0%, 100% 0%, 100% 100%, 0% 100%, 50% 30%, 70% 80%;
+              background-size: 250% 250%;
           }
-      </style>
+      }
+      
+      /* 保持响应式设计 */
+      @media (max-width: 768px) {
+        .message {
+          font-size: 2rem;
+          padding: 15px;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .message {
+          font-size: 1.5rem;
+          padding: 10px;
+        }
+      }
+    </style>
   </head>
   <body>
-      <div class="message">
-          IT出远门啦!<br>有问题请在<br>Teams上留言
-      </div>
+    <div class="message">
+      IT出远门啦!<br>有问题请在<br>Teams上留言
+    </div>
   </body>
   </html>`;
   
@@ -107,4 +124,3 @@ export default {
       });
     },
   };
-  
