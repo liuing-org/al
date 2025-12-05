@@ -113,8 +113,8 @@ export default {
   <body>
     <div class="message">
       <!-- IT请假啦!<br>有问题请在<br>Teams上留言 -->
-      <!-- IT出差啦!<br>12/8 - 1/9<br>有问题请在<br>Teams上留言 -->
-      IT 正在打工中!
+      IT出差啦!<br>12/8 - 1/9<br>有问题请在<br>Teams上留言 
+       <!-- IT 正在打工中! -->
     </div>
   </body>
   </html>`;
