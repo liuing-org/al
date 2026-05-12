@@ -100,7 +100,7 @@ export default {
   </head>
   <body>
       <div class="message">
-          5/12-5/13 <br>宁波出差中<br>有任何问题请在Teams上留言<br>企微留言可能会延迟
+          5/13-5/14 <br>宁波出差中<br>有任何问题请在Teams上留言<br>企微留言可能会延迟
       </div>
       <script>
           // 保持屏幕常亮
