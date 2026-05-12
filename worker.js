@@ -3,10 +3,10 @@ export default {
       const html = `<!DOCTYPE html>
   <html lang="zh-CN">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Out of Office</title>
-         <style>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>!!!</title>
+      <style>
           * {
               margin: 0;
               padding: 0;
@@ -99,11 +99,45 @@ export default {
       </style>
   </head>
   <body>
-    <div class="message">
-      <!-- IT请假啦!<br>有问题请在<br>Teams上留言 -->
-      IT出差啦!<br>4/21 - 4/23<br>有问题请在<br>Teams上留言 
-       <!-- IT 正在打工中! -->
-    </div>
+      <div class="message">
+          5/12-5/13 <br>宁波出差中<br>有任何问题请在Teams上留言<br>企微留言可能会延迟
+      </div>
+      <script>
+          // 保持屏幕常亮
+          async function requestWakeLock() {
+              try {
+                  if ('wakeLock' in navigator) {
+                      const wakeLock = await navigator.wakeLock.request('screen');
+                      
+                      // 页面被隐藏时释放锁
+                      document.addEventListener('visibilitychange', async () => {
+                          if (document.hidden) {
+                              wakeLock.release();
+                          } else {
+                              try {
+                                  await navigator.wakeLock.request('screen');
+                              } catch (err) {
+                                  console.error('恢复屏幕唤醒锁失败:', err);
+                              }
+                          }
+                      });
+                      
+                      console.log('屏幕已锁定，保持常亮');
+                  } else {
+                      console.warn('此浏览器不支持 Wake Lock API');
+                  }
+              } catch (err) {
+                  console.error('屏幕唤醒锁请求失败:', err);
+              }
+          }
+          
+          // 页面加载完成后请求屏幕常亮
+          if (document.readyState === 'loading') {
+              document.addEventListener('DOMContentLoaded', requestWakeLock);
+          } else {
+              requestWakeLock();
+          }
+      </script>
   </body>
   </html>`;
   
@@ -114,3 +148,4 @@ export default {
       });
     },
   };
+  
